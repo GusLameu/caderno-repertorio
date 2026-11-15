@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b35">
+<title>Repertório de músicas</title>
+<style>
+:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--gold:#d7ad61;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}
+.hero{max-width:1080px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
+h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;margin:10px 0}
+header p{margin:10px 0 0;color:#e1e9e5;max-width:650px}
+main{max-width:1080px;margin:26px auto;padding:0 18px 60px}
+.toolbar{display:grid;grid-template-columns:1fr 190px;gap:10px;margin-bottom:18px}
+input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--green2);box-shadow:0 0 0 3px #28594e1c}
+.meta{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:.88rem;margin:0 2px 14px}
+.song-list{display:grid;gap:13px}
+.song{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}
+.song-head::-webkit-details-marker{display:none}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.song-title{min-width:0;flex:1}
+.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}
+.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+.key{flex:0 0 auto;background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}
+.chevron{color:var(--muted);font-size:1.2rem;transition:transform .2s}
+details[open] .chevron{transform:rotate(180deg)}
+.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}
+.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:720px}
+.lyrics strong{font-family:system-ui,sans-serif;font-size:.78rem;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}
+.lyrics strong:first-child{margin-top:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+a.youtube,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
+a.youtube{background:var(--green);color:white}
+.print-btn{background:#edf2ee;color:var(--green)}
+a.youtube:hover{background:var(--green2)}
+.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
+@media(max-width:600px){.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{align-items:flex-start;flex-direction:column}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.toolbar,.meta,.actions,.chevron,footer{display:none!important}main{margin:0;padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<div class="eyebrow">Caderno de repertório</div>
+<h1>Músicas para cantar</h1>
+<p>Letra, tom e referência em vídeo organizados em um só lugar.</p>
+</div></header>
+<main>
+<div class="toolbar">
+<input id="search" type="search" placeholder="Buscar por número, título ou trecho da letra..." aria-label="Buscar músicas">
+<select id="keyFilter" aria-label="Filtrar por tom"><option value="">Todos os tons</option></select>
+</div>
+<div class="meta"><span id="count">17 músicas</span><span>Toque em uma música para abrir a letra</span></div>
+<section class="song-list" id="songs"></section>
+</main>
+<footer>Repertório organizado a partir das letras e dos tons enviados.</footer>
+<script>
+const songs = [
+{n:1,t:"Quem é que vai?",k:"C",url:"https://youtu.be/1OEXR7e2xIs?is=kNTIXqRgxQ5-iYFn",lyrics:`<strong>REFRÃO</strong>
+Quem é que vai, quem é que vai, quem é que vai nesta barca de Jesus, quem é que vai? (bis)
+
+<strong>1ª ESTROFE</strong>
+Tem muita gente
+Esperando por você
+
+A caminhar
+Esperando por você
+
+Todos cantando
+Esperando por você
+
+Juntos com Jesus
+Esperando por você
+
+E tem lugar
+Esperando por você
+
+Para sentar
+Esperando por você
+
+A barca está
+Esperando por você
+
+Para partir
+Esperando por você
+
+<strong>REFRÃO</strong>
+Quem é que vai, quem é que vai, quem é que vai nesta barca de Jesus, quem é que vai? (bis)
+
+<strong>2ª ESTROFE</strong>
+Jesus está
+Esperando por você
+
+Com um sorriso
+Esperando por você
+
+A caminhar
+Esperando por você
+
+Com a multidão
+Esperando por você
+
+A sua mão
+Esperando por você
+
+A acenar
+Esperando por você
+
+Chamando vem
+Esperando por você
+
+De coração
+Esperando por você`},
+{n:3,t:"Mais outro dia findou",k:"E",url:"https://youtu.be/yE3hRoHQ-zk?is=sDQIO7Ga_lFt3ov1",lyrics:`Mais outro dia findou e eu venho Te ver, para conversar.
+
+Mas uma noite chegou e eu venho agradecer, antes de repousar.
+
+<strong>REFRÃO</strong>
+Andei o dia inteiro procurando o meu irmão.
+Eu quis ser instrumento do Teu amor, do Teu perdão.
+Muito obrigado, Senhor, pelo amor que ensinei,
+Pelo amor que recebi, muito obrigado, Senhor.
+Pela dor que suavizei, por sorrisos que sorri.
+Sou peregrino do amor e venho agradecer
+O dia que vivi.
+Houve tristezas, Senhor,
+Mas eu não quis sofrer, pois caminhei em Ti.`},
+{n:6,t:"Caminhando com o Senhor",k:"F",url:"https://youtu.be/7sMQAQCORZE?is=bCnwjoE8MDbSJ4Xz",lyrics:`<strong>1ª ESTROFE</strong>
+Dois amigos caminhavam pela estrada,
+Conversando a respeito do Senhor.
+E um Deus acompanha esta jornada,
+Escondido num simples viajor.
+
+Quando chegam à noite na cidade,
+Jesus quer o caminho prosseguir,
+Mas acolhem num gesto de bondade,
+Pra que fique, não deixam de insistir.
+
+<strong>REFRÃO</strong>
+Se dois ou mais se reunirem em meu nome,
+Com desejo de a verdade compreender,
+No meio deles estarei saciando a fome,
+Partindo o pão eu me darei a conhecer.
+
+<strong>2ª ESTROFE</strong>
+Convidado a sentar-se à sua mesa,
+Para simples e amiga refeição,
+O Senhor lhes garante com certeza
+Que abençoa quem serve, dá seu pão.
+
+<strong>3ª ESTROFE</strong>
+Também nós caminhamos lado a lado,
+Cada dia encontramos nosso irmão.
+Só o acolhe quem não vai apressado,
+Com lugar para o amor no coração.
+
+<strong>4ª ESTROFE</strong>
+A presença de Deus traz alegria,
+Mas exige cuidado e atenção,
+Pois no humilde se esconde cada dia
+E é tão simples que cabe neste pão.`},
+{n:8,t:"A família, como vai?",k:"C",url:"https://youtu.be/gPWAWGgRk8Y?is=1j5uUJWIj3OI42pp",lyrics:`<strong>REFRÃO</strong>
+A família como vai?
+Meu irmão, venha e responda.
+Quem pergunta é o Pai,
+A verdade não esconda. (bis)
+
+<strong>1ª ESTROFE</strong>
+Vem à Igreja, reza e pede,
+Um amor o que sempre mede.
+Quando é hora de doar,
+Sufocando o seu desejo,
+Vai vivendo no varejo.
+Não é templo, nem altar.
+
+<strong>2ª ESTROFE</strong>
+Num viver de alegria,
+Dia e noite, noite e dia,
+Num eterno agradecer.
+Com o pouco que se tem,
+Se trabalha para o bem,
+Sem deixar ninguém sofrer.`},
+{n:10,t:"Há um barco esquecido na praia",k:"C",url:"https://youtu.be/n-Jnf7NdIzE?is=-HfKyZICZwvXEaRV",lyrics:`<strong>1ª ESTROFE</strong>
+Há um barco esquecido na praia,
+Já não leva ninguém a pescar.
+É o barco de André e Pedro
+Que partiram pra não mais voltar.
+
+Quantas vezes partiram seguros,
+Enfrentando os perigos do mar.
+Era chuva, era noite, era escuro,
+Mas os dois precisavam pescar.
+
+<strong>2ª ESTROFE</strong>
+De repente, aparece Jesus,
+Pouco a pouco acende uma luz.
+É preciso pescar diferente,
+Que o povo sente que o tempo chegou.
+
+E partiram sem mesmo pensar
+Nos perigos de profetizar.
+
+<strong>REFRÃO</strong>
+Há um barco esquecido na praia,
+Um barco esquecido na praia,
+Um barco esquecido na praia.
+
+<strong>3ª ESTROFE</strong>
+Há um barco esquecido na praia,
+Já não leva ninguém a pescar.
+É o barco de João e Tiago
+Que partiram pra não mais voltar.
+
+Quantas vezes em tempos sombrios,
+Enfrentando os perigos do mar,
+Barco e rede voltavam vazios,
+Mas os dois precisavam pescar.
+
+<strong>4ª ESTROFE</strong>
+Quantos barcos deixados na praia,
+Entre eles o meu deve estar.
+E o barco dos sonhos que eu tinha,
+Mas nunca deixei de sonhar.
+
+Quantas vezes enfrentei o perigo
+No meu barco de sonho a singrar,
+Jesus Cristo remava comigo:
+Eu no leme, Jesus a remar.`},
+{n:11,t:"Ó Senhor abençoai",sub:"Antes das refeições",k:"G",url:"https://youtu.be/x_bzFLED-_c?is=v26-OGatBYirA66G",lyrics:`Ó Senhor, abençoai,
+Esta nossa refeição.
+Que hoje tem mais alegria,
+Que hoje tem mais alegria,
+Com a tua...
+Com a tua...
+Com a tua companhia. (bis)`},
+{n:12,t:"Ao Senhor agradecemos",sub:"Depois das refeições",k:"Bb",url:"https://youtu.be/ZgseK_FZ1Ww?is=jiIiSp07QMgqfmka",lyrics:`Ao Senhor agradecemos, aleluia!
+O alimento que tivemos, aleluia!`},
+{n:13,t:"Ele tem o mundo em suas mãos",k:"D",url:"https://youtu.be/P-2vhDkpR_4?is=s1ah6vAdfNb5Nc0a",lyrics:`<strong>REFRÃO</strong>
+Ele tem o mundo em suas mãos.
+Ele tem o mundo em suas mãos.
+Ele é meu Deus e nosso Deus.
+Ele é meu Pai e nosso Pai.
+
+<strong>1ª ESTROFE</strong>
+Ele fez o universo,
+Ele fez o universo.
+Ele tem o mundo.
+
+<strong>2ª ESTROFE</strong>
+Ele é quem me deu a vida,
+Ele é quem me deu a vida.
+
+<strong>3ª ESTROFE</strong>
+Ele amou a humanidade,
+Ele amou a humanidade.
+
+<strong>4ª ESTROFE</strong>
+Ele deu seu próprio filho,
+Ele deu seu próprio filho.
+
+<strong>5ª ESTROFE</strong>
+Ele me adotou por filho,
+Ele me adotou por filho.`},
+{n:15,t:"Bom dia!",k:"Bb",url:"https://youtube.com/shorts/vS2UnfmcaCg?is=_fB4e9duYmGKwyyV",lyrics:`Bom dia! Bom dia! Bom dia!
+Hoje eu estou tão feliz!
+
+Bom dia! Bom dia! Bom dia!
+Meu coração é quem diz.
+
+Bom dia! Bom dia! Bom dia!
+Quero sorrir e cantar.
+
+A natureza é tão bela
+E nos ensina a amar.`},
+{n:16,t:"Oração pela paz",k:"B",url:"https://youtu.be/5KZJEa3LQNA?is=GI5ugYNOIZhITw46",lyrics:`<strong>1ª ESTROFE</strong>
+Cristo, quero ser instrumento de tua paz
+E do teu infinito amor.
+Onde houver ódio e rancor,
+Que eu leve a concórdia,
+Que eu leve o amor.
+
+<strong>2ª ESTROFE</strong>
+Onde há ofensa que dói,
+Que eu leve o perdão.
+Onde houver a discórdia,
+Que eu leve a união e tua paz.
+
+<strong>3ª ESTROFE</strong>
+Onde encontrar um irmão
+A chorar de tristeza,
+Sem ter voz e nem vez,
+Quero, bem no seu coração,
+Semear alegria
+Pra florir gratidão.
+
+<strong>4ª ESTROFE</strong>
+Mestre, que eu saiba amar,
+Compreender, consolar
+E dar sem receber.
+
+Quero sempre mais,
+Perdoar, trabalhar
+Na conquista e vitória da paz,
+E vitória da paz.
+
+<strong>5ª ESTROFE</strong>
+Mesmo que haja um só coração
+Que duvide do bem
+E do amor do céu.
+Quero com firmeza anunciar
+A palavra que traz...`},
+{n:18,t:"Pelas estradas da vida",k:"A",url:"https://youtu.be/25afgvtqzN0?is=0yLyrZwjdATKIxP7",lyrics:`<strong>1ª ESTROFE</strong>
+Pelas estradas da vida,
+Nunca sozinho estás,
+Contigo pelo caminho
+Santa Maria vai.
+
+Se pelo mundo os homens,
+Sem conhecer-se vão,
+Não negues nunca a tua mão
+A quem te encontrar.
+
+<strong>REFRÃO</strong>
+Ó vem conosco, vem caminhar,
+Santa Maria vem. (bis)
+
+<strong>2ª ESTROFE</strong>
+Mesmo que digam os homens
+Tu nada podes mudar.
+Luta por um mundo novo
+De unidade e paz.
+
+<strong>3ª ESTROFE</strong>
+Se parecer tua vida
+Inútil caminhar,
+Lembra que abres caminho.
+Outros te seguirão.`},
+{n:19,t:"Quero ouvir teu apelo, Senhor",k:"F",url:"https://youtu.be/zqmYLwjOu-Q?is=RCW5z7VFUg2YqGky",lyrics:`<strong>1ª ESTROFE</strong>
+Quero ouvir teu apelo, Senhor,
+E ao teu chamado de amor responder.
+Na alegria te quero servir
+E anunciar teu reino de amor.
+
+<strong>REFRÃO</strong>
+E pelo mundo eu vou cantando teu amor,
+Pois disponível estou para servir-te, Senhor.
+
+<strong>2ª ESTROFE</strong>
+Dia a dia tua graça me dás,
+Nela se apoia o meu caminhar.
+Se estás ao meu lado, Senhor,
+O que então poderei eu temer?`},
+{n:20,t:"Jesus Cristo me deixou inquieto",k:"D",url:"https://youtu.be/RXdGtoLEi5Y?is=wjk979RZ9rUeCv8Z",lyrics:`<strong>REFRÃO</strong>
+Jesus Cristo me deixou inquieto
+Nas palavras que Ele proferiu.
+Nunca mais eu pude olhar o mundo,
+Sem sentir aquilo que Jesus sentiu. (2x)
+
+<strong>1ª ESTROFE</strong>
+Eu vivia tão tranquilo e descansado
+E pensava ter chegado ao que busquei.
+Muitas vezes proclamei extasiado
+Que ao seguir a lei de Cristo eu me salvei.
+
+Mas depois que meu Senhor passou,
+Nunca mais meu coração se acomodou. (2x)
+
+<strong>2ª ESTROFE</strong>
+Minha vida eu pensei realizada,
+Esbanjei como semente em qualquer chão.
+Pouco a pouco ao caminhar na longa estrada,
+Percebi que havia tido uma ilusão.
+
+Mas depois que meu Senhor passou,
+Ilusão e comodismo se acabou. (2x)
+
+<strong>3ª ESTROFE</strong>
+Hoje quando vou andando pela vida,
+Encontrando a minha gente a me esperar,
+Já não canso nem reclamo da subida,
+Pois entendo que é preciso caminhar.
+
+Coração daquele que tem fé
+Vai mais longe, bem mais longe que seu pé. (2x)`},
+{n:21,t:"Tomado pela mão",k:"F",url:"https://youtu.be/5vk4lo2L8gA?is=LtcxupsIazTrqi8O",lyrics:`<strong>REFRÃO</strong>
+Tomado pela mão, com Jesus eu vou.
+Sigo-o como ovelha que encontrou o pastor.
+Tomado pela mão, com Jesus eu vou.
+Aonde Ele for!
+
+<strong>1ª ESTROFE</strong>
+Se Jesus me diz: "Amigo,
+Deixa tudo e vem comigo
+Onde tudo é mais formoso e mais feliz".
+
+Se Jesus me diz: "Amigo,
+Deixa tudo e vem comigo",
+Eu minha mão porei na sua e irei com Ele!
+
+<strong>2ª ESTROFE</strong>
+Eu te levarei, amigo, a um lugar comigo,
+Onde o sol e as estrelas brilham mais.
+Eu te levarei, amigo, a um lugar comigo,
+Onde tudo é mais formoso e mais feliz!`},
+{n:22,t:"Senhor, se tu me chamas",k:"D",url:"https://youtu.be/F-4mZTI88qs?is=CB8eZAvsHM7uepuf",lyrics:`<strong>REFRÃO</strong>
+Senhor, se Tu me chamas,
+Eu quero te ouvir.
+Se queres que eu te siga,
+Respondo: Eis-me aqui. (bis)
+
+<strong>1ª ESTROFE</strong>
+Profetas te ouviram e seguiram tua voz.
+Andaram o mundo afora e pregaram sem temor.
+Seus passos tu firmaste, sustentando seu vigor.
+Profeta tu me chamas: Vê, Senhor, aqui estou.
+
+<strong>2ª ESTROFE</strong>
+Nos passos de teu Filho toda a Igreja também vai.
+Seguindo Teu chamado de ser santa qual Jesus.
+Apóstolos e Mártires se deram sem medir.
+Apóstolo me chamas: Vê, Senhor, estou aqui.
+
+<strong>3ª ESTROFE</strong>
+Os séculos passaram, não passou porém tua voz.
+E chama ainda hoje, que convida a te seguir.
+Há homens e mulheres que te amam mais que a si.
+E dizem com firmeza: Vê, Senhor, estou aqui.`},
+{n:23,t:"Porque esperar amanhã",k:"D",url:"https://youtu.be/sOH4WktdtIs?is=2w8JYIxhVmsU69Ne",lyrics:`<strong>REFRÃO</strong>
+Por que esperar amanhã? (bis)
+Escuta este pranto, enxuga este pranto.
+Porque esperar amanhã?
+
+<strong>1ª ESTROFE</strong>
+Escuta este canto que nos traz o vento,
+É um canto de sofrimento.
+Alguém pede pão, alguém pede paz,
+E tu o lhe darás?
+
+<strong>2ª ESTROFE</strong>
+Escuta este canto de quem está sedento,
+É um canto de sofrimento...
+Alguém pede paz, alguém pede amor,
+E tu o que lhe darás?
+
+<strong>3ª ESTROFE</strong>
+Quem pode falar, quem vai responder
+Ao que pede esta voz?
+
+Cada um de nós tem sempre o que dar,
+Por isso não vai deixar...
+
+<strong>4ª ESTROFE</strong>
+Deixar pra fazer amanhã,
+Deixar pra fazer amanhã.
+Eu conto contigo, eu sou teu amigo.
+Por que esperar amanhã?`}
+];
+
+const list=document.getElementById('songs');
+const search=document.getElementById('search');
+const keyFilter=document.getElementById('keyFilter');
+const count=document.getElementById('count');
+[...new Set(songs.map(s=>s.k))].sort().forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent='Tom: '+k;keyFilter.appendChild(o)});
+function render(){
+ const q=search.value.trim().toLocaleLowerCase('pt-BR'), key=keyFilter.value;
+ const filtered=songs.filter(s=>(!key||s.k===key)&&(!q||`${s.n} ${s.t} ${s.k} ${s.sub||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q)));
+ count.textContent=`${filtered.length} ${filtered.length===1?'música':'músicas'}`;
+ list.innerHTML='';
+ if(!filtered.length){list.innerHTML='<div class="empty">Nenhuma música encontrada. Tente outro termo ou tom.</div>';return}
+ filtered.forEach(s=>{
+  const d=document.createElement('details');d.className='song';
+  const summary=document.createElement('summary');summary.className='song-head';
+  summary.innerHTML=`<span class="num">${String(s.n).padStart(2,'0')}</span><span class="song-title"><h2>${s.t}</h2>${s.sub?`<small>${s.sub}</small>`:''}</span><span class="key">${s.k}</span><span class="chevron">⌄</span>`;
+  const body=document.createElement('div');body.className='song-body';
+  const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;
+  const actions=document.createElement('div');actions.className='actions';
+  const a=document.createElement('a');a.className='youtube';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Assistir no YouTube';
+  const p=document.createElement('button');p.className='print-btn';p.type='button';p.textContent='Imprimir repertório';p.onclick=()=>window.print();
+  actions.append(a,p);body.append(lyrics,actions);d.append(summary,body);list.append(d);
+ });
+}
+search.addEventListener('input',render);keyFilter.addEventListener('change',render);render();
+</script>
+</body>
+</html>
