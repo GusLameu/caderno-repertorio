@@ -7,15 +7,26 @@
 <title>Repertório de músicas</title>
 <style>
 :root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--gold:#d7ad61;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.topbar{position:sticky;top:0;z-index:30;background:#122d29;border-bottom:1px solid rgba(215,173,97,.32)}
+.topbar-in{max-width:1080px;margin:auto;display:flex;align-items:center;gap:14px;padding:0 18px;min-height:54px}
+.brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;color:#fff;text-decoration:none;font:700 .8rem system-ui;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border-radius:8px;padding:6px 2px}
+.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.brand:hover,.brand:focus-visible{outline:none;color:var(--gold)}
+.nav{display:flex;gap:4px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:#c9d8d2;text-decoration:none;font:600 .82rem system-ui;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
+.nav a[aria-current="page"]{background:var(--gold);color:#2a2110}
+.nav a[aria-current="page"]:hover{background:var(--gold)}
 header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}
 .hero{max-width:1080px;margin:auto}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
 h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;margin:10px 0}
 header p{margin:10px 0 0;color:#e1e9e5;max-width:650px}
 main{max-width:1080px;margin:26px auto;padding:0 18px 60px}
-.toolbar{display:grid;grid-template-columns:1fr 190px;gap:10px;margin-bottom:18px}
+.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
 input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink);outline:none}
 input:focus,select:focus{border-color:var(--green2);box-shadow:0 0 0 3px #28594e1c}
 .meta{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:.88rem;margin:0 2px 14px}
@@ -41,11 +52,22 @@ a.youtube{background:var(--green);color:white}
 a.youtube:hover{background:var(--green2)}
 .empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
 footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
-@media(max-width:600px){.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{align-items:flex-start;flex-direction:column}}
+@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{align-items:flex-start;flex-direction:column}}@media print{.topbar{display:none}}
 @media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.toolbar,.meta,.actions,.chevron,footer{display:none!important}main{margin:0;padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
 </style>
 </head>
 <body>
+<div class="topbar">
+<div class="topbar-in">
+<a class="brand" href="index.html">Menu principal</a>
+<nav class="nav" aria-label="Mudar o momento">
+<a href="segunda-etapa-ecc.html" aria-current="page">Músicas gerais</a>
+<a href="terca-feira.html">Missa de entrega</a>
+<a href="sabado.html">Celebração da Palavra</a>
+<a href="domingo.html">Missa de encerramento</a>
+</nav>
+</div>
+</div>
 <header><div class="hero">
 <div class="eyebrow">Caderno de repertório</div>
 <h1>Músicas para cantar</h1>
@@ -54,9 +76,8 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32
 <main>
 <div class="toolbar">
 <input id="search" type="search" placeholder="Buscar por número, título ou trecho da letra..." aria-label="Buscar músicas">
-<select id="keyFilter" aria-label="Filtrar por tom"><option value="">Todos os tons</option></select>
 </div>
-<div class="meta"><span id="count">17 músicas</span><span>Toque em uma música para abrir a letra</span></div>
+<div class="meta"><span id="count">16 músicas</span><span>Toque em uma música para abrir a letra</span></div>
 <section class="song-list" id="songs"></section>
 </main>
 <footer>Repertório organizado a partir das letras e dos tons enviados.</footer>
@@ -464,15 +485,13 @@ Por que esperar amanhã?`}
 
 const list=document.getElementById('songs');
 const search=document.getElementById('search');
-const keyFilter=document.getElementById('keyFilter');
 const count=document.getElementById('count');
-[...new Set(songs.map(s=>s.k))].sort().forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent='Tom: '+k;keyFilter.appendChild(o)});
 function render(){
- const q=search.value.trim().toLocaleLowerCase('pt-BR'), key=keyFilter.value;
- const filtered=songs.filter(s=>(!key||s.k===key)&&(!q||`${s.n} ${s.t} ${s.k} ${s.sub||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q)));
+ const q=search.value.trim().toLocaleLowerCase('pt-BR');
+ const filtered=songs.filter(s=>!q||`${s.n} ${s.t} ${s.k} ${s.sub||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q));
  count.textContent=`${filtered.length} ${filtered.length===1?'música':'músicas'}`;
  list.innerHTML='';
- if(!filtered.length){list.innerHTML='<div class="empty">Nenhuma música encontrada. Tente outro termo ou tom.</div>';return}
+ if(!filtered.length){list.innerHTML='<div class="empty">Nenhuma música encontrada. Tente outro termo.</div>';return}
  filtered.forEach(s=>{
   const d=document.createElement('details');d.className='song';
   const summary=document.createElement('summary');summary.className='song-head';
@@ -485,7 +504,7 @@ function render(){
   actions.append(a,p);body.append(lyrics,actions);d.append(summary,body);list.append(d);
  });
 }
-search.addEventListener('input',render);keyFilter.addEventListener('change',render);render();
+search.addEventListener('input',render);render();
 </script>
 </body>
 </html>
