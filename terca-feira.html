@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b35"><title>Missa de Entrega | Repertório</title>
+<style>
+:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.topbar{position:sticky;top:0;z-index:30;background:#122d29;border-bottom:1px solid rgba(215,173,97,.32)}
+.topbar-in{max-width:1080px;margin:auto;display:flex;align-items:center;gap:14px;padding:0 18px;min-height:54px}
+.brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;color:#fff;text-decoration:none;font:700 .8rem system-ui;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border-radius:8px;padding:6px 2px}
+.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#d7ad61}
+.brand:hover,.brand:focus-visible{outline:none;color:#d7ad61}
+.nav{display:flex;gap:4px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:#c9d8d2;text-decoration:none;font:600 .82rem system-ui;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
+.nav a[aria-current="page"]{background:#d7ad61;color:#2a2110}
+.nav a[aria-current="page"]:hover{background:#d7ad61}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}.hero,main{max-width:1080px;margin:auto}.hero{padding:0}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
+h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}header p{margin:10px 0 0;color:#e1e9e5}
+main{padding:26px 18px 60px}.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
+.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink)}
+.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}.song-list{display:grid;gap:13px}
+.song{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}.song-head::-webkit-details-marker{display:none}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800}
+.song-title{min-width:0;flex:1}.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+.key{background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}.chevron{color:var(--muted);font-size:1.2rem}details[open] .chevron{transform:rotate(180deg)}
+.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
+.lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}.lyrics strong:first-child{margin-top:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
+a.video{background:var(--green);color:white}.print-btn{background:#edf2ee;color:var(--green)}.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
+@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+</style></head><body>
+<div class="topbar">
+<div class="topbar-in">
+<a class="brand" href="index.html">Menu principal</a>
+<nav class="nav" aria-label="Mudar o momento">
+<a href="segunda-etapa-ecc.html">Músicas gerais</a>
+<a href="terca-feira.html" aria-current="page">Missa de entrega</a>
+<a href="sabado.html">Celebração da Palavra</a>
+<a href="domingo.html">Missa de encerramento</a>
+</nav>
+</div>
+</div>
+<header><div class="hero"><div class="eyebrow">Caderno litúrgico · ECC · Setor 4D</div><h1>Missa de Entrega</h1><p>2º Reencontro do ECC da 2ª etapa · Repertório de cantos, letras e tons.</p></div></header>
+<main><div class="info">Cantos organizados na ordem da celebração. Abra cada canto para consultar a letra e o tom. A referência em vídeo do Salmo foi incluída conforme o link enviado.</div>
+<div class="toolbar"><input id="search" type="search" placeholder="Buscar por canto, momento ou trecho da letra..." aria-label="Buscar cantos"></div>
+<div class="meta"><span id="count">10 cantos</span><span>Toque em um canto para abrir a letra</span></div><section class="song-list" id="songs"></section></main>
+<footer>Repertório da Missa de Entrega · ECC · Setor 4D</footer>
+<script>
+const songs=[
+{n:1,part:"Entrada",t:"Deixa a luz do céu entrar",k:"D",lyrics:`<strong>1ª ESTROFE</strong>
+Tu anseias, eu bem sei, a salvação,
+Tens desejo de banir a escuridão,
+Abre, pois, de par em par teu coração
+E deixa a luz do céu entrar.
+<strong>REFRÃO</strong>
+Deixa a luz do céu entrar (2x)
+Abre bem as portas do teu coração
+E deixa a luz do céu entrar (bis)
+<strong>2ª ESTROFE</strong>
+Cristo, a luz do céu, em ti quer habitar,
+Para as trevas do pecado dissipar,
+Teu caminho e coração iluminar
+E deixa a luz do céu entrar.
+<strong>3ª ESTROFE</strong>
+Que alegria andar ao brilho dessa luz.
+Vida eterna e paz no coração produz.
+Oh! Aceita agora o Salvador Jesus,
+E deixa a luz do céu entrar.`},
+{n:2,part:"Ato penitencial",t:"Senhor, tende piedade",k:"D",lyrics:`<strong>1ª PARTE · SENHOR</strong>
+Senhor, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.
+<strong>2ª PARTE · CRISTO</strong>
+Cristo, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.
+<strong>3ª PARTE · SENHOR</strong>
+Senhor, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.`},
+{n:3,part:"Glória",t:"Glória a Deus nas alturas",sub:"Eliana Ribeiro",k:"D",lyrics:`Glória a Deus nas alturas,
+E paz na terra aos homens por Ele amados.
+Senhor Deus, rei dos céus,
+Deus Pai todo-poderoso:
+Nós vos louvamos,
+Nós vos bendizemos,
+Nós vos adoramos,
+Nós vos glorificamos,
+Nós vos damos graças por vossa imensa glória.
+Senhor Jesus Cristo, Filho Unigênito,
+Senhor Deus, Cordeiro de Deus,
+Filho de Deus Pai.
+Vós que tirais o pecado do mundo,
+Tende piedade de nós.
+Vós que tirais o pecado do mundo,
+Acolhei a nossa súplica.
+Vós, que estais à direita do Pai,
+Tende piedade de nós.
+Só vós sois o Santo,
+Só vós o Senhor,
+Só vós o Altíssimo, Jesus Cristo,
+Com o Espírito Santo,
+Na glória de Deus Pai. Amém.`},
+{n:4,part:"Salmo responsorial",t:"Salmo 14",sub:"Responsório",k:"A",url:"https://youtu.be/0E-g0gfHIiw?is=7h8wP3utUplXsp70",lyrics:`<strong>REFRÃO</strong>
+Ao vencedor, dar-lhe-ei o direito de sentar-se comigo no meu trono.
+<strong>1ª RESPOSTA</strong>
+"Senhor, quem morará em vossa casa?"
+É aquele que caminha sem pecado e pratica a justiça fielmente;
+Que pensa a verdade no seu íntimo e não solta em calúnias sua língua;
+<strong>2ª RESPOSTA</strong>
+Que em nada prejudica o seu irmão,
+Nem cobre de insultos seu vizinho;
+Que não dá valor algum ao homem ímpio,
+Mas honra os que respeitam o Senhor;
+<strong>3ª RESPOSTA</strong>
+Não empresta o seu dinheiro com usura,
+Nem se deixa subornar contra o inocente.
+Jamais vacilará quem vive assim!`},
+{n:5,part:"Aclamação ao Evangelho",t:"Eu vim para escutar",k:"Dm",lyrics:`<strong>1ª ESTROFE</strong>
+Eu vim para escutar
+Tua Palavra, Tua Palavra, Tua Palavra de amor.
+<strong>2ª ESTROFE</strong>
+Eu gosto de escutar
+Tua Palavra, Tua Palavra, Tua Palavra de amor.
+<strong>3ª ESTROFE</strong>
+Eu quero entender melhor
+Tua Palavra, Tua Palavra, Tua Palavra de amor.
+<strong>4ª ESTROFE</strong>
+O mundo ainda vai viver,
+Tua Palavra, Tua Palavra, Tua Palavra de amor.`},
+{n:6,part:"Ofertório",t:"Daqui do meu lugar",sub:"CD Missa / Fazedores da Paz · Paulinas-COMEP",k:"A",lyrics:`<strong>1ª ESTROFE</strong>
+Daqui do meu lugar
+Eu olho o teu altar
+E fico a imaginar aquele pão,
+Aquela refeição.
+Partiste aquele pão,
+O deste a teus irmãos,
+Criaste a religião do pão do céu,
+Do pão que vem do céu.
+<strong>REFRÃO</strong>
+Somos a Igreja do pão,
+Do pão repartido e do abraço e da paz (bis)
+<strong>2ª ESTROFE</strong>
+Daqui do meu lugar
+Eu olho o teu altar
+E fico a imaginar aquela paz,
+Aquela comunhão.
+Viveste aquela paz
+E deste a teus irmãos,
+Criaste a religião do pão da paz,
+Da paz que vem do céu.
+<strong>REFRÃO</strong>
+Somos a Igreja da paz,
+Da paz partilhada
+E do abraço e do pão (bis)`},
+{n:7,part:"Santo",t:"Senhor Deus do Universo",k:"C",lyrics:`Santo, Santo, Santo,
+Senhor Deus do universo.
+O céu e a terra proclamam a Vossa Glória.
+Hosana nas alturas, (Hosana)
+Hosana nas alturas, (Hosana)
+Bendito aquele que vem
+Em nome do Senhor.
+Bendito aquele que vem
+Em nome do Senhor.
+Hosana nas alturas, (Hosana)
+Hosana nas alturas, (Hosana)`},
+{n:8,part:"Cordeiro",t:"Cordeiro de Deus",sub:"Ministério Amor e Adoração",k:"F",lyrics:`Cordeiro de Deus,
+Que tirais o pecado do mundo.
+Tende piedade, piedade de nós.
+Cordeiro de Deus,
+Que tirais o pecado do mundo.
+Tende piedade, piedade de nós.
+Cordeiro de Deus,
+Que tirais o pecado do mundo.
+Dai-nos a paz, a vossa paz.`},
+{n:9,part:"Canto de comunhão",t:"Importa viver, Senhor, unidos no amor",k:"F",lyrics:`<strong>1ª ESTROFE</strong>
+Na mesa sagrada se faz unidade
+No pão que alimenta, que é pão do Senhor
+Formamos família na fraternidade
+Não há diferença de raça e de cor.
+<strong>REFRÃO</strong>
+Importa viver, Senhor, unidos no amor
+Na participação, vivendo em comunhão!
+Importa viver, Senhor, unidos no amor
+Na participação, vivendo em comunhão!
+<strong>2ª ESTROFE</strong>
+Chegar junto à mesa é comprometer-se
+É a Deus converter-se com sinceridade
+O grito dos fracos devemos ouvir
+E em nome de Cristo, amar e servir.
+<strong>3ª ESTROFE</strong>
+Enquanto na terra o pão for partido
+O homem nutrido se transformará
+Vivendo a esperança num mundo melhor
+Com Cristo lutando, o amor vencerá.
+<strong>4ª ESTROFE</strong>
+Se participamos da Eucaristia
+É grande a alegria que Deus oferece
+Porém não podemos deixar esquecida
+A dor, nesta vida, que o pobre padece.
+<strong>5ª ESTROFE</strong>
+Assim, comungando da única Vida
+A morte vencida será nossa sorte
+Se unidos buscarmos a libertação
+Teremos com Cristo a ressurreição!`},
+{n:10,part:"Canto final",t:"Senhor, eu quero te agradecer",k:"E",lyrics:`<strong>1ª ESTROFE</strong>
+Senhor, eu quero te agradecer
+Por todos os dias a gente poder conversar.
+Senhor, o mundo precisa te conhecer,
+Mas eu te prometo que vou evangelizar.
+<strong>REFRÃO</strong>
+Eu quero te dizer agora
+Que já vou embora evangelizar (bis)
+<strong>2ª ESTROFE</strong>
+Senhor, às vezes me ponho a rezar
+E peço o fim da violência e da fome do irmão.
+Senhor, que chegue a todos os povos
+A graça, o perdão e o anúncio da salvação.`}
+];
+const list=document.getElementById('songs'),search=document.getElementById('search'),count=document.getElementById('count');
+function render(){
+ const q=search.value.trim().toLocaleLowerCase('pt-BR');
+ const filtered=songs.filter(s=>!q||`${s.n} ${s.part} ${s.t} ${s.k} ${s.sub||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q));
+ count.textContent=`${filtered.length} ${filtered.length===1?'canto':'cantos'}`;list.innerHTML='';
+ if(!filtered.length){list.innerHTML='<div class="empty">Nenhum canto encontrado. Tente outro termo.</div>';return}
+ filtered.forEach(s=>{
+  const d=document.createElement('details');d.className='song';
+  const summary=document.createElement('summary');summary.className='song-head';
+  summary.innerHTML=`<span class="num">${String(s.n).padStart(2,'0')}</span><span class="song-title"><h2>${s.t}</h2><small>${s.part}${s.sub?' · '+s.sub:''}</small></span><span class="key">${s.k}</span><span class="chevron">⌄</span>`;
+  const body=document.createElement('div');body.className='song-body';
+  const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;
+  const actions=document.createElement('div');actions.className='actions';
+  if(s.url){const a=document.createElement('a');a.className='video';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Abrir referência no YouTube';actions.append(a)}
+  const p=document.createElement('button');p.className='print-btn';p.type='button';p.textContent='Imprimir repertório';p.onclick=()=>window.print();
+  actions.append(p);body.append(lyrics,actions);d.append(summary,body);list.append(d);
+ });
+}
+search.addEventListener('input',render);render();
+</script></body></html>
