@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b35">
+<title>Caderno de repertório</title>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--gold:#d7ad61;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:44px 20px 38px}
+.hero{max-width:1080px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
+h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;margin:10px 0}
+header p{margin:10px 0 0;color:#e1e9e5;max-width:620px}
+main{max-width:1080px;margin:32px auto;padding:0 18px 60px}
+.section-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 2px 16px;color:var(--muted);font-size:.88rem}
+.section-label strong{color:var(--ink);font:600 1.05rem Georgia,serif}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}
+.card{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 22px 20px;text-decoration:none;color:inherit;box-shadow:var(--shadow);overflow:hidden;isolation:isolate;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.js .card{opacity:0;transform:translateY(14px)}
+.js .card.is-visible{opacity:1;transform:translateY(0);transition:opacity .45s ease,transform .45s ease,box-shadow .22s ease,border-color .22s ease}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .25s ease}
+.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 16px 38px rgba(27,48,41,.14);border-color:#cfd8d2;outline:none}
+.card:hover::before,.card:focus-visible::before{transform:scaleY(1)}
+.card:active{transform:translateY(-1px)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.num{flex:0 0 40px;height:40px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.tag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#8a6a2a;background:#f5ead3;border-radius:999px;padding:6px 10px}
+.card h2{font:600 1.2rem/1.3 Georgia,serif}
+.card p{color:var(--muted);font-size:.92rem}
+.card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid var(--line);font-size:.85rem;font-weight:700;color:var(--green)}
+.card-foot .arrow{font-size:1.15rem;line-height:1;transition:transform .22s ease}
+.card:hover .arrow,.card:focus-visible .arrow{transform:translateX(4px)}
+kbd{font:600 .7rem system-ui;background:#edf2ee;color:var(--green);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px}
+.hint{text-align:center;color:var(--muted);font-size:.82rem;margin-top:24px}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36px}
+@media(max-width:600px){header{padding:34px 18px 30px}main{margin-top:24px}.menu{grid-template-columns:1fr}.card{padding:20px 18px 18px}.hint{display:none}}
+@media(prefers-reduced-motion:reduce){.js .card,.js .card.is-visible{opacity:1;transform:none;transition:none}.card:hover,.card:focus-visible{transform:none}}
+@media print{.hint,footer{display:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="hero">
+<div class="eyebrow">Caderno de repertório</div>
+<h1>Escolha o momento</h1>
+<p>Músicas, letras e tons organizados por celebração. Toque em um cartão para abrir o repertório.</p>
+</div>
+</header>
+<main>
+<div class="section-label">
+<strong>Repertórios</strong>
+<span>4 opções</span>
+</div>
+<nav class="menu" aria-label="Repertórios por celebração">
+<a class="card" href="segunda-etapa-ecc.html" style="--i:0">
+<span class="card-top"><span class="num">01</span><span class="tag">Etapa ECC</span></span>
+<h2>Músicas gerais</h2>
+<p>Repertório completo da segunda etapa, com busca por título, letra e tom.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="card" href="terca-feira.html" style="--i:1">
+<span class="card-top"><span class="num">02</span><span class="tag">Missa</span></span>
+<h2>Missa de entrega</h2>
+<p>Cânticos para a celebração de entrega, do acolhimento à despedida.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="card" href="sabado.html" style="--i:2">
+<span class="card-top"><span class="num">03</span><span class="tag">Celebração</span></span>
+<h2>Celebração da Palavra</h2>
+<p>Músicas para a liturgia da Palavra no sábado, com entrada, salmo e comunhão.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="card" href="domingo.html" style="--i:3">
+<span class="card-top"><span class="num">04</span><span class="tag">Missa</span></span>
+<h2>Missa de encerramento</h2>
+<p>Cânticos de ação de graças e envio para o domingo de encerramento.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+</nav>
+<p class="hint">Dica: use as teclas <kbd>1</kbd> a <kbd>4</kbd> para abrir um repertório.</p>
+</main>
+<footer>Repertório organizado a partir das letras e dos tons enviados.</footer>
+<script>
+const cards=[...document.querySelectorAll('.card')];
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||!('IntersectionObserver'in window)){
+  cards.forEach(c=>c.classList.add('is-visible'));
+}else{
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(!e.isIntersecting)return;
+      const card=e.target;
+      card.style.transitionDelay=(Number(card.style.getPropertyValue('--i'))||0)*70+'ms';
+      card.classList.add('is-visible');
+      io.unobserve(card);
+    });
+  },{threshold:.15});
+  cards.forEach(c=>io.observe(c));
+}
+document.addEventListener('keydown',(ev)=>{
+  if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
+  const i=['1','2','3','4'].indexOf(ev.key);
+  if(i>=0&&cards[i])window.location.href=cards[i].getAttribute('href');
+});
+</script>
+</body>
+</html>
