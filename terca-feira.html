@@ -16,8 +16,9 @@
 .nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
 .nav a[aria-current="page"]{background:#d7ad61;color:#2a2110}
 .nav a[aria-current="page"]:hover{background:#d7ad61}
+@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
 header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}.hero,main{max-width:1080px;margin:auto}.hero{padding:0}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
-h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}header p{margin:10px 0 0;color:#e1e9e5}
+h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}.hero-title h1{margin:0}header p{margin:10px 0 0;color:#e1e9e5}
 main{padding:26px 18px 60px}.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
 .toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink)}
 .meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}.song-list{display:grid;gap:13px}
@@ -29,10 +30,10 @@ main{padding:26px 18px 60px}.info{background:var(--paper);border:1px solid var(-
 .song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
 .lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}.lyrics strong:first-child{margin-top:0}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
-a.video{background:var(--green);color:white}.print-btn{background:#edf2ee;color:var(--green)}.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+a.video{background:var(--green);color:white}.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
 footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
 @media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column}}
-@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
 </style></head><body>
 <div class="topbar">
 <div class="topbar-in">
@@ -42,10 +43,13 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32
 <a href="terca-feira.html" aria-current="page">Missa de entrega</a>
 <a href="sabado.html">Celebração da Palavra</a>
 <a href="domingo.html">Missa de encerramento</a>
+<a href="vigilia-sexta.html">Vigília de sexta</a>
+<a href="vigilia-sabado.html">Vigília de sábado</a>
+<a href="vigilia-domingo.html">Vigília de domingo</a>
 </nav>
 </div>
 </div>
-<header><div class="hero"><div class="eyebrow">Caderno litúrgico · ECC · Setor 4D</div><h1>Missa de Entrega</h1><p>2º Reencontro do ECC da 2ª etapa · Repertório de cantos, letras e tons.</p></div></header>
+<header><div class="hero"><div class="eyebrow">Caderno litúrgico · ECC · Setor 4D</div><div class="hero-title"><h1>Missa de Entrega</h1><button class="print-btn" type="button" onclick="window.print()">🖨 Imprimir repertório</button></div><p>2º Reencontro do ECC da 2ª etapa · Repertório de cantos, letras e tons.</p></div></header>
 <main><div class="info">Cantos organizados na ordem da celebração. Abra cada canto para consultar a letra e o tom. A referência em vídeo do Salmo foi incluída conforme o link enviado.</div>
 <div class="toolbar"><input id="search" type="search" placeholder="Buscar por canto, momento ou trecho da letra..." aria-label="Buscar cantos"></div>
 <div class="meta"><span id="count">10 cantos</span><span>Toque em um canto para abrir a letra</span></div><section class="song-list" id="songs"></section></main>
@@ -242,8 +246,7 @@ function render(){
   const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;
   const actions=document.createElement('div');actions.className='actions';
   if(s.url){const a=document.createElement('a');a.className='video';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Abrir referência no YouTube';actions.append(a)}
-  const p=document.createElement('button');p.className='print-btn';p.type='button';p.textContent='Imprimir repertório';p.onclick=()=>window.print();
-  actions.append(p);body.append(lyrics,actions);d.append(summary,body);list.append(d);
+  if(actions.children.length)body.append(lyrics,actions);else body.append(lyrics);d.append(summary,body);list.append(d);
  });
 }
 search.addEventListener('input',render);render();

@@ -20,10 +20,13 @@ body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-syste
 .nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
 .nav a[aria-current="page"]{background:var(--gold);color:#2a2110}
 .nav a[aria-current="page"]:hover{background:var(--gold)}
+@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
 header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}
 .hero{max-width:1080px;margin:auto}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
 h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;margin:10px 0}
+.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}
+.hero-title h1{margin:0}
 header p{margin:10px 0 0;color:#e1e9e5;max-width:650px}
 main{max-width:1080px;margin:26px auto;padding:0 18px 60px}
 .toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
@@ -48,12 +51,13 @@ details[open] .chevron{transform:rotate(180deg)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 a.youtube,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
 a.youtube{background:var(--green);color:white}
-.print-btn{background:#edf2ee;color:var(--green)}
+.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}
 a.youtube:hover{background:var(--green2)}
 .empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
 footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
 @media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{align-items:flex-start;flex-direction:column}}@media print{.topbar{display:none}}
-@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.toolbar,.meta,.actions,.chevron,footer{display:none!important}main{margin:0;padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.toolbar,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{margin:0;padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
 </style>
 </head>
 <body>
@@ -65,12 +69,18 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32
 <a href="terca-feira.html">Missa de entrega</a>
 <a href="sabado.html">Celebração da Palavra</a>
 <a href="domingo.html">Missa de encerramento</a>
+<a href="vigilia-sexta.html">Vigília de sexta</a>
+<a href="vigilia-sabado.html">Vigília de sábado</a>
+<a href="vigilia-domingo.html">Vigília de domingo</a>
 </nav>
 </div>
 </div>
 <header><div class="hero">
 <div class="eyebrow">Caderno de repertório</div>
+<div class="hero-title">
 <h1>Músicas para cantar</h1>
+<button class="print-btn" type="button" onclick="window.print()">🖨 Imprimir repertório</button>
+</div>
 <p>Letra, tom e referência em vídeo organizados em um só lugar.</p>
 </div></header>
 <main>
@@ -484,8 +494,7 @@ function render(){
   const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;
   const actions=document.createElement('div');actions.className='actions';
   const a=document.createElement('a');a.className='youtube';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Assistir no YouTube';
-  const p=document.createElement('button');p.className='print-btn';p.type='button';p.textContent='Imprimir repertório';p.onclick=()=>window.print();
-  actions.append(a,p);body.append(lyrics,actions);d.append(summary,body);list.append(d);
+  actions.append(a);body.append(lyrics,actions);d.append(summary,body);list.append(d);
  });
 }
 search.addEventListener('input',render);render();

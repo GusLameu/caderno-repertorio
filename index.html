@@ -53,7 +53,7 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36
 <main>
 <div class="section-label">
 <strong>Repertórios</strong>
-<span>4 opções</span>
+<span>7 opções</span>
 </div>
 <nav class="menu" aria-label="Repertórios por celebração">
 <a class="card" href="segunda-etapa-ecc.html" style="--i:0">
@@ -80,8 +80,26 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36
 <p>Cânticos de ação de graças e envio para o domingo de encerramento.</p>
 <span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
 </a>
+<a class="card" href="vigilia-sexta.html" style="--i:4">
+<span class="card-top"><span class="num">05</span><span class="tag">Vigília</span></span>
+<h2>Vigília de sexta</h2>
+<p>Repertório da vigília de sexta-feira, com cânticos de acolhida e oração.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="card" href="vigilia-sabado.html" style="--i:5">
+<span class="card-top"><span class="num">06</span><span class="tag">Vigília</span></span>
+<h2>Vigília de sábado</h2>
+<p>Músicas da vigília de sábado, do louvor inicial ao momento de entrega.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="card" href="vigilia-domingo.html" style="--i:6">
+<span class="card-top"><span class="num">07</span><span class="tag">Vigília</span></span>
+<h2>Vigília de domingo</h2>
+<p>Cânticos de ação de graças e envio para a vigília de domingo.</p>
+<span class="card-foot"><span>Abrir repertório</span><span class="arrow" aria-hidden="true">→</span></span>
+</a>
 </nav>
-<p class="hint">Dica: use as teclas <kbd>1</kbd> a <kbd>4</kbd> para abrir um repertório.</p>
+<p class="hint">Dica: use as teclas <kbd>1</kbd> a <kbd>7</kbd> para abrir um repertório.</p>
 </main>
 <footer>Repertório organizado a partir das letras e dos tons enviados.</footer>
 <script>
@@ -103,7 +121,7 @@ if(reduce||!('IntersectionObserver'in window)){
 }
 document.addEventListener('keydown',(ev)=>{
   if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
-  const i=['1','2','3','4'].indexOf(ev.key);
+  const i=['1','2','3','4','5','6','7'].indexOf(ev.key);
   if(i>=0&&cards[i])window.location.href=cards[i].getAttribute('href');
 });
 </script>
