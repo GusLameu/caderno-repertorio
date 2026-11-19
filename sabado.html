@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b35"><title>Celebração da Palavra | Repertório</title>
+<style>
+:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.topbar{position:sticky;top:0;z-index:30;background:#122d29;border-bottom:1px solid rgba(215,173,97,.32)}
+.topbar-in{max-width:1080px;margin:auto;display:flex;align-items:center;gap:14px;padding:0 18px;min-height:54px}
+.brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;color:#fff;text-decoration:none;font:700 .8rem system-ui;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border-radius:8px;padding:6px 2px}
+.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#d7ad61}
+.brand:hover,.brand:focus-visible{outline:none;color:#d7ad61}
+.nav{display:flex;gap:4px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:#c9d8d2;text-decoration:none;font:600 .82rem system-ui;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
+.nav a[aria-current="page"]{background:#d7ad61;color:#2a2110}
+.nav a[aria-current="page"]:hover{background:#d7ad61}
+@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}.hero,main{max-width:1080px;margin:auto}.hero{padding:0}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
+h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}.hero-title h1{margin:0}header p{margin:10px 0 0;color:#e1e9e5}
+main{padding:26px 18px 60px}.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
+.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink)}
+.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}.song-list{display:grid;gap:13px}
+.song{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}.song-head::-webkit-details-marker{display:none}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800}
+.song-title{min-width:0;flex:1}.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+.key{background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}.chevron{color:var(--muted);font-size:1.2rem}details[open] .chevron{transform:rotate(180deg)}
+.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
+.lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}.lyrics strong:first-child{margin-top:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
+a.video{background:var(--green);color:white}.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+.song-body .empty{padding:20px;text-align:left}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
+@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+</style></head><body>
+<div class="topbar">
+<div class="topbar-in">
+<a class="brand" href="index.html">Menu principal</a>
+<nav class="nav" aria-label="Mudar o momento">
+<a href="segunda-etapa-ecc.html">Músicas gerais</a>
+<a href="terca-feira.html">Missa de entrega</a>
+<a href="sabado.html" aria-current="page">Celebração da Palavra</a>
+<a href="domingo.html">Missa de encerramento</a>
+<a href="vigilia-sexta.html">Vigília de sexta</a>
+<a href="vigilia-sabado.html">Vigília de sábado</a>
+<a href="vigilia-domingo.html">Vigília de domingo</a>
+</nav>
+</div>
+</div>
+<header><div class="hero"><div class="eyebrow">Caderno de repertório · Celebração</div><div class="hero-title"><h1>Celebração da Palavra</h1><button class="print-btn" type="button" onclick="window.print()">🖨 Imprimir repertório</button></div><p>Sábado, 21 de novembro de 2026 · Cantos na ordem da celebração.</p></div></header>
+<main><div class="info">Cantos organizados na ordem da celebração. Abra cada canto para consultar a letra e o tom. Os tons informados aparecem ao lado de cada canto; os demais ficaram sem tom para evitar suposições.</div>
+<div class="toolbar"><input id="search" type="search" placeholder="Buscar por canto, momento ou trecho da letra..." aria-label="Buscar cantos"></div>
+<div class="meta"><span id="count">10 cantos</span><span>Toque em um canto para abrir a letra</span></div><section class="song-list" id="songs"></section></main>
+<footer>Repertório da Celebração da Palavra · ECC · Setor 4D</footer>
+<script>
+const songs=[
+{n:1,part:"Entrada",t:"Quem é esta que avança como aurora",k:"D",lyrics:`<strong>ESTROFE</strong>
+Quem é esta que avança como aurora
+Temível como exército em ordem de batalha
+Brilhante como o sol e como a lua
+Mostrando os caminhos aos filhos seus
+<strong>REFRÃO</strong>
+Ah, ah, ah, minha alma glorifica ao Senhor
+Meu espírito exulta em Deus, meu Salvador`},
+{n:2,part:"Ato penitencial",t:"Senhor, tende piedade",k:"D",lyrics:`<strong>1ª PARTE · SENHOR</strong>
+Senhor, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.
+<strong>2ª PARTE · CRISTO</strong>
+Cristo, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.
+<strong>3ª PARTE · SENHOR</strong>
+Senhor, tende piedade e perdoai a nossa culpa,
+E perdoai a nossa culpa.
+Porque nós somos vosso povo
+Que vem pedir vosso perdão.`},
+{n:3,part:"Glória",t:"Glória a Deus nas alturas",sub:"Eliana Ribeiro",k:"D",lyrics:`Glória a Deus nas alturas,
+E paz na terra aos homens por Ele amados.
+Senhor Deus, rei dos céus,
+Deus Pai todo-poderoso:
+Nós vos louvamos,
+Nós vos bendizemos,
+Nós vos adoramos,
+Nós vos glorificamos,
+Nós vos damos graças por vossa imensa glória.
+Senhor Jesus Cristo, Filho Unigênito,
+Senhor Deus, Cordeiro de Deus,
+Filho de Deus Pai.
+Vós que tirais o pecado do mundo,
+Tende piedade de nós.
+Vós que tirais o pecado do mundo,
+Acolhei a nossa súplica.
+Vós, que estais à direita do Pai,
+Tende piedade de nós.
+Só vós sois o Santo,
+Só vós o Senhor,
+Só vós o Altíssimo, Jesus Cristo,
+Com o Espírito Santo,
+Na glória de Deus Pai. Amém.`},
+{n:4,part:"Salmo",t:"Responsório Lc 1,46-47.48-49.50-51.52-53.54-55",k:"A",lyrics:`<strong>REFRÃO</strong>
+O Poderoso fez por mim maravilhas, e Santo é o seu nome.
+<strong>1</strong>
+A minh'alma engrandece ao Senhor, e se alegrou o meu espírito em Deus, meu Salvador,
+<strong>2</strong>
+Pois, ele viu a pequenez de sua serva, eis que agora as gerações hão de chamar-me de bendita. O Poderoso fez por mim maravilhas e Santo é o seu nome!
+<strong>3</strong>
+Seu amor, de geração em geração, chega a todos que o respeitam. Demonstrou o poder de seu braço, dispersou os orgulhosos.
+<strong>4</strong>
+Derrubou os poderosos de seus tronos e os humildes exaltou. De bens saciou os famintos e despediu, sem nada, os ricos.
+<strong>5</strong>
+Acolheu Israel, seu servidor, fiel ao seu amor, como havia prometido aos nossos pais, em favor de Abraão e de seus filhos, para sempre.`},
+{n:5,part:"Aclamação ao Evangelho",t:"Aleluia",sub:"Feliz quem ouve e observa a palavra de Deus",k:"B",lyrics:`<strong>REFRÃO</strong>
+Aleluia, Aleluia, Aleluia.
+<strong>ANTÍFONA</strong>
+Feliz quem ouve e observa a palavra de Deus!`},
+{n:6,part:"Ofertório",t:"Doa a tua vida como Maria",k:"Bm",lyrics:`<strong>1ª ESTROFE</strong>
+Numa noite de suor, sobre o barco em alto mar
+O céu começa a clarear, a tua rede está vazia
+Mas a voz que te chama, te mostrará um outro mar
+E sobre muitos corações a tua rede lançarás
+<strong>REFRÃO</strong>
+Doa a tua vida, como Maria aos pés da cruz
+E serás servo de cada homem
+Servo por amor
+Sacerdote da humanidade
+<strong>2ª ESTROFE</strong>
+Caminhavas no silêncio, esperando além da dor
+Que a semente que tu lançavas
+No bom terreno germinasse
+Mas o coração exulta
+Porque o campo já está dourado
+O grão maduro pelo sol, no celeiro pode entrar.`},
+{n:7,part:"Santo",t:"Senhor Deus do Universo",k:"C",lyrics:`Santo, Santo, Santo,
+Senhor Deus do universo.
+O céu e a terra proclamam a Vossa Glória.
+Hosana nas alturas, (Hosana)
+Hosana nas alturas, (Hosana)
+Bendito aquele que vem
+Em nome do Senhor.
+Bendito aquele que vem
+Em nome do Senhor.
+Hosana nas alturas, (Hosana)
+Hosana nas alturas, (Hosana)`},
+{n:8,part:"Antes da comunhão",t:"Jesus está aqui",k:"B",lyrics:`Jesus está aqui, Ele está aqui
+Tão certo como o ar que eu respiro (aleluia)
+Tão certo como as manhãs que se levantam
+Tão certo quanto eu te falo e podes me ouvir.`},
+{n:9,part:"Comunhão",t:"Quando teu Pai revelou",k:"F",lyrics:`<strong>1ª ESTROFE</strong>
+Quando teu Pai revelou o segredo a Maria
+Que, pela força do Espírito, conceberia
+A Ti, Jesus, Ela não hesitou logo em responder
+Faça-se em mim, pobre serva o que a Deus aprouver!
+<strong>2ª ESTROFE</strong>
+Hoje imitando a Maria que é imagem da Igreja
+Nossa família outra vez Te recebe e deseja
+Cheia de fé, de esperança e de amor, dizer sim a Deus
+Eis aqui os teus servos, Senhor!
+<strong>REFRÃO</strong>
+Que a graça de Deus cresça em nós sem cessar
+E de Ti, nosso Pai, venha o Espírito Santo de amor
+Pra gerar e formar Cristo em nós
+<strong>3ª ESTROFE</strong>
+Por um decreto do Pai Ela foi escolhida
+Para gerar-te, ó Senhor, que és origem da vida
+Cheia do Espírito Santo no corpo e no coração
+Foi quem melhor cooperou com a Tua missão
+<strong>4ª ESTROFE</strong>
+Na comunhão recebemos o Espírito Santo
+E vem contigo Jesus, o teu Pai sacrossanto
+Vamos agora ajudar-te no plano da salvação
+Eis aqui os teus servos, Senhor!
+<strong>REFRÃO</strong>
+Que a graça de Deus cresça em nós sem cessar
+E de Ti, nosso Pai, venha o Espírito Santo de amor
+Pra gerar e formar Cristo em nós
+<strong>5ª ESTROFE</strong>
+No coração de Maria, no olhar doce e terno
+Sempre tiveste na vida um apoio materno
+Desde Belém, Nazaré, só viveu para Te servir
+Quando morrias na cruz Tua mãe estava ali
+<strong>6ª ESTROFE</strong>
+Mãe amorosa da Igreja quer ser nosso auxílio
+Reproduzir nos cristãos as feições de Teu Filho
+Como Ela fez em Caná, nos convida a Te obedecer
+Eis aqui os Teus servos, Senhor!
+<strong>REFRÃO</strong>
+Que a graça de Deus cresça em nós sem cessar
+E de Ti, nosso Pai, venha o Espírito Santo de amor
+Pra gerar e formar Cristo em nós`},
+{n:10,part:"Canto final",t:"Uma entre todas foi a escolhida",k:"D",lyrics:`<strong>1ª ESTROFE</strong>
+Uma entre todas foi a escolhida
+Fostes tu, Maria, a serva preferida
+Mãe do meu Senhor
+Mãe do meu salvador
+<strong>REFRÃO</strong>
+Maria, cheia de graça e consolo
+Venha caminhar com teu povo
+Nossa mãe sempre será
+Maria, cheia de graça e consolo
+Venha caminhar com teu povo
+Nossa mãe sempre será
+<strong>2ª ESTROFE</strong>
+Roga pelos pecadores desta Terra
+Roga pelo povo em que seu Deus espera
+Mãe do meu Senhor mãe do meu salvador
+<strong>REFRÃO</strong>
+Maria, cheia de graça e consolo
+Venha caminhar com teu povo
+Nossa mãe sempre será
+Maria, cheia de graça e consolo
+Venha caminhar com teu povo
+Nossa mãe sempre será`}
+];
+const list=document.getElementById('songs'),search=document.getElementById('search'),count=document.getElementById('count');
+function render(){
+ const q=search.value.trim().toLocaleLowerCase('pt-BR');
+ const filtered=songs.filter(s=>!q||`${s.n} ${s.part} ${s.t} ${s.k||''} ${s.sub||''} ${s.note||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q));
+ count.textContent=`${filtered.length} ${filtered.length===1?'canto':'cantos'}`;list.innerHTML='';
+ if(!filtered.length){list.innerHTML='<div class="empty">Nenhum canto encontrado. Tente outro termo.</div>';return}
+ filtered.forEach(s=>{
+  const d=document.createElement('details');d.className='song';
+  const summary=document.createElement('summary');summary.className='song-head';
+  summary.innerHTML=`<span class="num">${String(s.n).padStart(2,'0')}</span><span class="song-title"><h2>${s.t}</h2><small>${s.part}${s.sub?' · '+s.sub:''}</small></span>${s.k?`<span class="key">${s.k}</span>`:''}<span class="chevron">⌄</span>`;
+  const body=document.createElement('div');body.className='song-body';
+  if(s.lyrics){const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;body.append(lyrics)}
+  else{const note=document.createElement('div');note.className='empty';note.textContent=s.note||'A letra ainda não foi enviada.';body.append(note)}
+  d.append(summary,body);list.append(d);
+ });
+}
+search.addEventListener('input',render);render();
+</script></body></html>
