@@ -5,17 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#183b35">
 <title>Caderno de repertório</title>
-<script>document.documentElement.classList.add('js')</script>
 <style>
 :root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--gold:#d7ad61;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:44px 20px 38px}
-.hero{max-width:1080px;margin:auto}
+.topbar{position:sticky;top:0;z-index:30;background:#122d29;border-bottom:1px solid rgba(215,173,97,.32)}
+.topbar-in{max-width:1080px;margin:auto;display:flex;align-items:center;gap:14px;padding:0 18px;min-height:54px}
+.brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;color:#fff;text-decoration:none;font:700 .8rem system-ui;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border-radius:8px;padding:6px 2px}
+.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.brand:hover,.brand:focus-visible{outline:none;color:var(--gold)}
+.nav{display:flex;gap:4px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:#c9d8d2;text-decoration:none;font:600 .82rem system-ui;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
+.nav a[aria-current="page"]{background:var(--gold);color:#2a2110}
+.nav a[aria-current="page"]:hover{background:var(--gold)}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}
+.hero,main{max-width:1080px;margin:auto}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
-h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;margin:10px 0}
-header p{margin:10px 0 0;color:#e1e9e5;max-width:620px}
-main{max-width:1080px;margin:32px auto;padding:0 18px 60px}
+h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}
+.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}
+.hero-title h1{margin:0;min-width:0}
+header p{margin:10px 0 0;color:#e1e9e5;max-width:650px}
+main{padding:26px 18px 60px}
+.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
+.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--green2);box-shadow:0 0 0 3px #28594e1c}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}
+.song-list{display:grid;gap:13px}
+.song{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}
+.song-head::-webkit-details-marker{display:none}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.song-title{min-width:0;flex:1}
+.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}
+.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+.key{flex:0 0 auto;background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}
+.chevron{flex:0 0 auto;width:9px;height:9px;margin:0 5px 5px 3px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+details[open] .chevron{transform:rotate(225deg);margin-bottom:0;margin-top:5px}
+.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}
+.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
+.lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}
+.lyrics strong:first-child{margin-top:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
+a.video{background:var(--green);color:#fff}
+a.video:hover{background:var(--green2)}
+.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}
+.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+.song-body .empty{padding:20px;text-align:left}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36px}
+@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
+@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column;align-items:flex-start}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}.eyebrow{color:#666}h1{font-size:1.6rem}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
 .section-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 2px 16px;color:var(--muted);font-size:.88rem}
 .section-label strong{color:var(--ink);font:600 1.05rem Georgia,serif}
 .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}
@@ -27,7 +71,7 @@ main{max-width:1080px;margin:32px auto;padding:0 18px 60px}
 .card:hover::before,.card:focus-visible::before{transform:scaleY(1)}
 .card:active{transform:translateY(-1px)}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.num{flex:0 0 40px;height:40px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.card .num{flex:0 0 40px;height:40px;font-size:.85rem}
 .tag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#8a6a2a;background:#f5ead3;border-radius:999px;padding:6px 10px}
 .card h2{font:600 1.2rem/1.3 Georgia,serif}
 .card p{color:var(--muted);font-size:.92rem}
@@ -36,21 +80,33 @@ main{max-width:1080px;margin:32px auto;padding:0 18px 60px}
 .card:hover .arrow,.card:focus-visible .arrow{transform:translateX(4px)}
 kbd{font:600 .7rem system-ui;background:#edf2ee;color:var(--green);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px}
 .hint{text-align:center;color:var(--muted);font-size:.82rem;margin-top:24px}
-footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36px}
-@media(max-width:600px){header{padding:34px 18px 30px}main{margin-top:24px}.menu{grid-template-columns:1fr}.card{padding:20px 18px 18px}.hint{display:none}}
 @media(prefers-reduced-motion:reduce){.js .card,.js .card.is-visible{opacity:1;transform:none;transition:none}.card:hover,.card:focus-visible{transform:none}}
-@media print{.hint,footer{display:none}}
+@media print{.topbar,.info,.hint,footer{display:none!important}.js .card,.js .card.is-visible{opacity:1;transform:none}.card{box-shadow:none;break-inside:avoid;border:1px solid #ccc}}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<header>
-<div class="hero">
+<div class="topbar">
+<div class="topbar-in">
+<a class="brand" href="index.html">Menu principal</a>
+<nav class="nav" aria-label="Mudar o momento">
+<a href="segunda-etapa-ecc.html">Músicas gerais</a>
+<a href="terca-feira.html">Missa de entrega</a>
+<a href="sabado.html">Celebração da Palavra</a>
+<a href="domingo.html">Missa de encerramento</a>
+<a href="vigilia-sexta.html">Vigília de sexta</a>
+<a href="vigilia-sabado.html">Vigília de sábado</a>
+<a href="vigilia-domingo.html">Vigília de domingo</a>
+</nav>
+</div>
+</div>
+<header><div class="hero">
 <div class="eyebrow">Caderno de repertório</div>
 <h1>Escolha o momento</h1>
 <p>Músicas, letras e tons organizados por celebração. Toque em um cartão para abrir o repertório.</p>
-</div>
-</header>
+</div></header>
 <main>
+<div class="info">Cantos com letra e tom organizados por momento da celebração.</div>
 <div class="section-label">
 <strong>Repertórios</strong>
 <span>7 opções</span>
@@ -121,7 +177,7 @@ if(reduce||!('IntersectionObserver'in window)){
 }
 document.addEventListener('keydown',(ev)=>{
   if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
-  const i=['1','2','3','4','5','6','7'].indexOf(ev.key);
+  const i=cards.findIndex((c,n)=>String(n+1)===ev.key);
   if(i>=0&&cards[i])window.location.href=cards[i].getAttribute('href');
 });
 </script>

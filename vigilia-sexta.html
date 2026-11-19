@@ -1,40 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#183b35"><title>Vigília de Sexta | Repertório</title>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b35">
+<title>Vigília de sexta | Repertório</title>
 <style>
 :root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202a27;--muted:#66736d;--green:#183b35;--green2:#28594e;--gold:#d7ad61;--line:#e5e2d9;--shadow:0 8px 28px rgba(27,48,41,.08)}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
 .topbar{position:sticky;top:0;z-index:30;background:#122d29;border-bottom:1px solid rgba(215,173,97,.32)}
 .topbar-in{max-width:1080px;margin:auto;display:flex;align-items:center;gap:14px;padding:0 18px;min-height:54px}
 .brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;color:#fff;text-decoration:none;font:700 .8rem system-ui;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border-radius:8px;padding:6px 2px}
-.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#d7ad61}
-.brand:hover,.brand:focus-visible{outline:none;color:#d7ad61}
+.brand::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.brand:hover,.brand:focus-visible{outline:none;color:var(--gold)}
 .nav{display:flex;gap:4px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .nav a{color:#c9d8d2;text-decoration:none;font:600 .82rem system-ui;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
 .nav a:hover,.nav a:focus-visible{background:#ffffff1f;color:#fff;outline:none}
-.nav a[aria-current="page"]{background:#d7ad61;color:#2a2110}
-.nav a[aria-current="page"]:hover{background:#d7ad61}
-@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
-header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}.hero,main{max-width:1080px;margin:auto}.hero{padding:0}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
-h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}.hero-title h1{margin:0}header p{margin:10px 0 0;color:#e1e9e5}
-main{padding:26px 18px 60px}.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
-.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink)}
-.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}.song-list{display:grid;gap:13px}
+.nav a[aria-current="page"]{background:var(--gold);color:#2a2110}
+.nav a[aria-current="page"]:hover{background:var(--gold)}
+header{background:linear-gradient(130deg,#183b35,#28594e);color:#fff;padding:38px 20px 32px}
+.hero,main{max-width:1080px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#d8c99e;font-weight:700}
+h1{font:600 clamp(2rem,5vw,3.1rem)/1.08 Georgia,serif;margin:10px 0}
+.hero-title{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0}
+.hero-title h1{margin:0;min-width:0}
+header p{margin:10px 0 0;color:#e1e9e5;max-width:650px}
+main{padding:26px 18px 60px}
+.info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin-bottom:18px;color:var(--muted);font-size:.9rem}
+.toolbar{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px 14px;font:inherit;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--green2);box-shadow:0 0 0 3px #28594e1c}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:.88rem;margin:0 2px 14px}
+.song-list{display:grid;gap:13px}
 .song{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}.song-head::-webkit-details-marker{display:none}
-.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800}
-.song-title{min-width:0;flex:1}.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
-.key{background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}.chevron{color:var(--muted);font-size:1.2rem}details[open] .chevron{transform:rotate(180deg)}
-.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
-.lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}.lyrics strong:first-child{margin-top:0}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
-a.video{background:var(--green);color:white}.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
-footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32px}
-@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column}}
-@media print{body{background:white}header{background:white;color:black;padding:10px 0}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
-</style></head><body>
+.song-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;list-style:none}
+.song-head::-webkit-details-marker{display:none}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:#edf2ee;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.song-title{min-width:0;flex:1}
+.song-title h2{font:600 1.12rem/1.25 Georgia,serif;margin:0}
+.song-title small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+.key{flex:0 0 auto;background:#f5ead3;color:#684c1c;border-radius:999px;padding:6px 11px;font-weight:800;font-size:.85rem}
+.chevron{flex:0 0 auto;width:9px;height:9px;margin:0 5px 5px 3px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+details[open] .chevron{transform:rotate(225deg);margin-bottom:0;margin-top:5px}
+.song-body{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,34px) 24px}
+.lyrics{font:1rem/1.8 Georgia,serif;white-space:pre-line;max-width:780px}
+.lyrics strong{font:700 .78rem system-ui;letter-spacing:.08em;color:var(--green);display:block;margin:17px 0 5px}
+.lyrics strong:first-child{margin-top:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+a.video,.print-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 14px;text-decoration:none;font:600 .9rem system-ui;cursor:pointer}
+a.video{background:var(--green);color:#fff}
+a.video:hover{background:var(--green2)}
+.print-btn{background:#edf2ee;color:var(--green);box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.print-btn:hover,.print-btn:focus-visible{background:#fff;outline:none;box-shadow:0 0 0 3px #ffffff40}
+.empty{padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+.song-body .empty{padding:20px;text-align:left}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 36px}
+@media(max-width:1240px){.nav a{padding:7px 9px;font-size:.78rem}.brand{font-size:.74rem;letter-spacing:.06em}}
+@media(max-width:600px){.topbar-in{gap:10px;padding:0 12px;min-height:50px}.brand{font-size:.72rem}.nav a{padding:7px 10px;font-size:.78rem}.toolbar{grid-template-columns:1fr}.song-head{gap:10px;padding:14px}.num{flex-basis:36px;height:36px}.song-title h2{font-size:1rem}.key{padding:5px 9px}.meta{flex-direction:column;align-items:flex-start}}
+@media print{body{background:white}header{background:white;color:black;padding:10px 0}.eyebrow{color:#666}h1{font-size:1.6rem}header p,.topbar,.toolbar,.info,.meta,.actions,.chevron,footer,.print-btn{display:none!important}main{padding:0}.song{box-shadow:none;break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}.song:not([open]) .song-body{display:block}.song-head{padding:10px}.song-body{padding:10px 20px}.key{border:1px solid #aaa;background:white;color:black}}
+</style>
+</head>
+<body>
 <div class="topbar">
 <div class="topbar-in">
 <a class="brand" href="index.html">Menu principal</a>
@@ -49,11 +77,21 @@ footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 18px 32
 </nav>
 </div>
 </div>
-<header><div class="hero"><div class="eyebrow">Caderno de repertório · Vigília</div><div class="hero-title"><h1>Vigília de Sexta</h1><button class="print-btn" type="button" onclick="window.print()">🖨 Imprimir repertório</button></div><p>Cantos da vigília de sexta-feira, na ordem da celebração.</p></div></header>
-<main><div class="info">Cantos organizados na ordem da vigília. Abra cada canto para consultar a letra e o tom.</div>
+<header><div class="hero">
+<div class="eyebrow">Caderno de repertório</div>
+<div class="hero-title">
+<h1>Vigília de Sexta</h1>
+<button class="print-btn" type="button" onclick="window.print()">🖨 Imprimir repertório</button>
+</div>
+<p>Cantos da vigília de sexta-feira, na ordem da celebração.</p>
+</div></header>
+<main>
+<div class="info">Cantos com letra e tom organizados por momento da celebração.</div>
 <div class="toolbar"><input id="search" type="search" placeholder="Buscar por canto, momento ou trecho da letra..." aria-label="Buscar cantos"></div>
-<div class="meta"><span id="count">6 cantos</span><span>Toque em um canto para abrir a letra</span></div><section class="song-list" id="songs"></section></main>
-<footer>Repertório da Vigília de Sexta</footer>
+<div class="meta"><span id="count">6 cantos</span><span>Toque em um canto para abrir a letra</span></div>
+<section class="song-list" id="songs"></section>
+</main>
+<footer>Repertório organizado a partir das letras e dos tons enviados.</footer>
 <script>
 const songs=[
 {n:1,part:"Perdão",t:"Perdão, Senhor!",k:"G",lyrics:`<strong>1ª ESTROFE</strong>
@@ -158,19 +196,22 @@ deixa-nos sempre o coração.`}
 const list=document.getElementById('songs'),search=document.getElementById('search'),count=document.getElementById('count');
 function render(){
  const q=search.value.trim().toLocaleLowerCase('pt-BR');
- const filtered=songs.filter(s=>!q||`${s.n} ${s.part} ${s.t} ${s.k} ${s.sub||''} ${s.lyrics.replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q));
+ const filtered=songs.filter(s=>!q||`${s.n} ${s.part||''} ${s.t} ${s.k||''} ${s.sub||''} ${s.note||''} ${(s.lyrics||'').replace(/<[^>]*>/g,' ')}`.toLocaleLowerCase('pt-BR').includes(q));
  count.textContent=`${filtered.length} ${filtered.length===1?'canto':'cantos'}`;list.innerHTML='';
  if(!filtered.length){list.innerHTML='<div class="empty">Nenhum canto encontrado. Tente outro termo.</div>';return}
  filtered.forEach(s=>{
   const d=document.createElement('details');d.className='song';
   const summary=document.createElement('summary');summary.className='song-head';
-  summary.innerHTML=`<span class="num">${String(s.n).padStart(2,'0')}</span><span class="song-title"><h2>${s.t}</h2><small>${s.part}${s.sub?' · '+s.sub:''}</small></span><span class="key">${s.k}</span><span class="chevron">⌄</span>`;
+  const meta=[s.part,s.sub].filter(Boolean).join(' · ');
+  summary.innerHTML=`<span class="num">${String(s.n).padStart(2,'0')}</span><span class="song-title"><h2>${s.t}</h2>${meta?`<small>${meta}</small>`:''}</span>${s.k?`<span class="key">${s.k}</span>`:''}<span class="chevron" aria-hidden="true"></span>`;
   const body=document.createElement('div');body.className='song-body';
-  const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;
-  const actions=document.createElement('div');actions.className='actions';
-  if(s.url){const a=document.createElement('a');a.className='video';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Abrir referência no YouTube';actions.append(a)}
-  if(actions.children.length)body.append(lyrics,actions);else body.append(lyrics);d.append(summary,body);list.append(d);
+  if(s.lyrics){const lyrics=document.createElement('div');lyrics.className='lyrics';lyrics.innerHTML=s.lyrics;body.append(lyrics)}
+  else{const note=document.createElement('div');note.className='empty';note.textContent=s.note||'A letra ainda não foi enviada.';body.append(note)}
+  if(s.url){const actions=document.createElement('div');actions.className='actions';const a=document.createElement('a');a.className='video';a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ Abrir referência no YouTube';actions.append(a);body.append(actions)}
+  d.append(summary,body);list.append(d);
  });
 }
 search.addEventListener('input',render);render();
-</script></body></html>
+</script>
+</body>
+</html>
